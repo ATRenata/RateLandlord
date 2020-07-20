@@ -1,0 +1,75 @@
+{% extends 'landlord/base.html' %}
+
+<head>
+    {% block title %}
+    Reviews
+    {% endblock %}
+</head>
+
+{% block content %}
+
+<style>
+    table{
+        width: 100%;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    input{
+        background-color:white;
+    }
+    input:hover{
+        background-color: black;
+        color:white;
+    }
+    .center{
+      margin-left: 23%;
+      margin-right: 23%;
+      margin-top: 60px;
+    }
+    #land_title{
+        background-color: white;
+        color:black;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<body >
+    <div id="container"  class="center">
+        <div id="land_title" >
+            <h3>{{landlord.first_name}}, {{landlord.last_name}} <br> {{landlord.address.raw}}</h3>
+            <form action="{% url 'addrating:review' landlord.id %}">
+                <input type="submit" value="Add Review"/>
+            </form>
+        </div>
+
+        <div id="reviews" >
+            {% for review in reviews %}
+            <table >
+                <tr>
+                    <td> <strong> Fixing rate:           </strong> {{review.fixing_rate}}/5  </td>
+                    <td> <strong> Liveable conditions :  </strong> {{review.liveable_cond}}/5</td>
+                    <td> <strong> Would take again:      </strong>
+                        {% if review.take_again %}
+                        Yes
+                        {% else %}
+                        No
+                        {% endif%}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"> <strong> Review: </strong>{{review.review}}</td>
+                </tr>
+            </table>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+{% endblock %}

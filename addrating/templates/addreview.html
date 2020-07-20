@@ -1,0 +1,51 @@
+{% extends 'landlord/base.html' %}
+
+<head>
+    {% block title %}
+    Add Review
+    {% endblock %}
+</head>
+
+{% block content %}
+<style>
+    table{
+        width: 50%;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    #field{
+        text-align:right;
+    }
+    button{
+        border: 1px solid black;
+        background-color: black;
+        color: white;
+    }
+
+</style>
+<body>
+
+    <form method="post" class="w3-container w3-display-left w3-padding-60 w3-margin-top" style="margin-left: 7px;">
+        <h2 style="border: 1px solid black; width: 40%; padding-left: 1%;">Add Review</h2>
+        <h3>{{landlord.last_name}} {{landlord.first_name}}</h3>
+        <h3>{{landlord.address.raw}}</h3>
+
+        {% csrf_token %}
+        {% for field in form %}
+            <table>
+                {% if forloop.counter <= 4 %}
+                <tr>
+                        <th>{{field.label_tag}} </th>
+                        <td id="field">{{field}}</td>
+                </tr>
+                {% endif %}
+            </table>
+        {% endfor %}
+
+             <input type="hidden" name="landlord" value="{{landlord}}">
+        <button type="submit" >Submit</button>
+    </form>
+</body>
+{% endblock %}

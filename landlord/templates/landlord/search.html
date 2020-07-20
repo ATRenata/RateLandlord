@@ -1,0 +1,55 @@
+{% extends 'landlord/base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    {{form.media}}
+</head>
+
+<style>
+    body{
+        background-image:  url('{% static 'city2.jpg' %}');
+        min-height: 100%;
+        background-position: absolute center;
+        background-size: cover;
+    }
+    button{
+        background-color: black;
+        position: relative;
+        left: 100%;
+        bottom: 40px;
+        color: white;
+        height: 40px;
+  	    border-radius: 26px;
+	    border:5px solid black;
+	    margin-left: 5px;
+    }
+    input[type=text]{
+        border: 1px solid black;
+        border-radius: 10px;
+        height: 40px;
+        padding: 3px 10px 3px 10px;
+        color: black;
+        font-family:  Arial, Helvetica, sans-serif;
+        width: 450px;
+    }
+    input[type=text]:focus{
+        border: 3px solid #2E0014;
+    }
+</style>
+
+<body>
+    <div class="w3-display-middle" >
+        <form method="post">
+           {% csrf_token %}
+            {{form.address}}
+        <button type="submit">Search</button>
+     </form>
+    </div>
+
+</body>
+
+{% endblock %}
+</html>

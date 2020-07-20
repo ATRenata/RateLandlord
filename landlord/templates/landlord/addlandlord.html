@@ -1,0 +1,49 @@
+{% extends 'landlord/base.html' %}
+{% block content %}
+<head>
+    {% block title %}
+        Add Landlord
+    {% endblock %}
+    {{ form.media }} <!-- needed for JS/GoogleMaps lookup -->
+</head>
+
+<style>
+
+button{
+    margin: 10px 0px 0px 77%;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}
+<!--table, th, td {-->
+<!--  border: 1px solid blue;-->
+<!--   width: 100%;-->
+<!--}-->
+#title{
+    border: 1px solid black;
+    width: 16.9%;
+    margin-top: 8%;
+}
+#field{
+    text-align: left;
+}
+</style>
+
+    <h2 id="title" class="w3-display-topmiddle w3-padding-large">Add Landlord</h2>
+    <form method="post" class="w3-large w3-display-middle" >
+
+        {% csrf_token %}
+        <table>
+        {% for field in form %}
+
+                {% if forloop.counter < 4 %}
+                <tr>
+                        <th>{{field.label_tag}} </th>
+                        <td id="field">{{field}}</td>
+                </tr>
+                {% endif %}
+              {% endfor %}
+            </table>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
