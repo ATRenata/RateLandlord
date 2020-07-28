@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'landlord',
     'addrating',
     'ratemylandlord',
-
+    'django-filters'
 ]
 
 MIDDLEWARE = [
