@@ -1,1 +1,1 @@
-web: gunicorn ratemylandlord/ratemylandlord.wsgi --log-file -
+web: gunicorn ratemylandlord.wsgi --log-file -
