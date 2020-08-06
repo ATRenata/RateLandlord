@@ -1,4 +1,4 @@
-- name: Deploy to Heroku
+- name: CD to Heoku
   uses: AkhileshNS/heroku-deploy@v3.4.6
   with:
     # This will be used for authentication. You can find it in your heroku homepage account settings
