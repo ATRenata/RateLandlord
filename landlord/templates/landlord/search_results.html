@@ -5,30 +5,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <style>
+
 body{
-    background-image:  url('{% static 'city2.jpg' %}');
-    min-height: 100%;
-    background-position: absolute center;
-    background-size: cover;
+<!--    background-image:  url('{% static 'city2.jpg' %}');-->
+<!--    min-height: 100%;-->
+<!--    background-position: absolute center;-->
+<!--    background-size: cover;-->
 }
- .res_land{
+ .result{
     background-color: black;
-    color: white;
+    color : white;
     padding: 10px;
     font-size: large;
     text-decoration: none;
  }
- .res_land:hover{
-    background-color:white;
+ .result:hover{
+    background-color: white;
     color: black;
     text-decoration: underline;
+    border-style: solid;
  }
  .address{
     background-color: black;
     color: white;
-    margin-top: 7%;
+    margin-top: 6%;
     font-size: xxx-large;
     padding-left: 1%;
     padding-right: 1%;
@@ -41,7 +48,7 @@ body{
     Results
 </div>
 
-    <div class="w3-display-middle res_land" >
+    <div class=" w3-display-middle result" >
         {% for landlord in landlords%}
             {% csrf_token %}
             <a href="{% url 'addrating:show_rev' landlord.id %}" > {{landlord}}</a>
@@ -51,4 +58,3 @@ body{
 </body>
 
 {% endblock %}
-</html>

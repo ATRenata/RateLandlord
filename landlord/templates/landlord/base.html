@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
     <title>{% block title %}RateMyLandlord{% endblock %}</title>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 
 <style>
-body,h1 {
-    font-family: "Raleway", sans-serif ;
-<!--    background-color: #E0D8DE;-->
-}
+
 body, html {height: 100%}
-<!--.bgimg {-->
-<!--  background-image:  url('{% static 'city2.jpg' %}');-->
-<!--  min-height: 100%;-->
-<!--  background-position: center;-->
-<!--  background-size: cover;-->
-<!--}-->
+.bgimg {
+  background-image:  url('{% static 'city2.jpg' %}');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
 .topbox{
     background-color: black;
     color: white;
@@ -29,25 +33,31 @@ body, html {height: 100%}
 .topbox:hover{
     text-decoration: underline;
 }
+
 </style>
 
 <body>
 
-<!--    {% load static %}-->
-<!--    <img src="{% static "city.jpg" %}" alt="My image">-->
     <div>
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fixed-bottom" role="alert" style="margin: 0 40px 0 1px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% endif %}
+
         <div class="w3-display-topleft w3-padding-large w3-xlarge">
             <a href="{% url 'landlord:search' %}" class="topbox">Search</a>
             <a href="{% url 'add' %}" class="topbox">Add Landlord</a>
         </div>
-         <div class="topbox w3-display-topmiddle w3-padding-small w3-xlarge" style="margin-top: 10px; border: 2px solid white;">Rate My Landlord </div>
-        {% if messages %}
-        <ul class="messages" style="margin-top: 50px; margin-bottom: 0px;">
-            {% for message in messages %}
-            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+
+        <div class="topbox w3-display-topright w3-padding-small w3-xlarge"
+              style="margin: 10px 20px 0 0; border: 2px solid white;">Rate My Landlord </div>
+
         <div id="content" name="content" >
             {% block content %}
             {% endblock %}

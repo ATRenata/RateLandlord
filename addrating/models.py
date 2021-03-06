@@ -17,7 +17,7 @@ BINARY = [
     (True, 'Yes')
 ]
 class Review(models.Model):
-    # change var in add rating iteration in the for loop
+
     fixing_rate = models.IntegerField(choices=RATING)
     liveable_cond = models.IntegerField(choices=RATING)
     review = models.TextField(max_length=1000, null=False)

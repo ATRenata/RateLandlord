@@ -1,9 +1,6 @@
 {% extends 'landlord/base.html' %}
 {% block content %}
 <head>
-    {% block title %}
-        Add Landlord
-    {% endblock %}
     {{ form.media }} <!-- needed for JS/GoogleMaps lookup -->
 </head>
 
@@ -15,10 +12,7 @@ button{
     border: 1px solid white;
     color: white;
 }
-<!--table, th, td {-->
-<!--  border: 1px solid blue;-->
-<!--   width: 100%;-->
-<!--}-->
+
 #title{
     border: 1px solid black;
     width: 16.9%;

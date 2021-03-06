@@ -26,9 +26,9 @@
 
 </style>
 <body>
+<h2 class="w3-display-topmiddle" style="border: 1px solid black; width: 14%; padding-left: 1%;margin-top:1%">Add Review</h2>
+<form method="post" class="w3-container w3-display-middle w3-padding-60 w3-margin-top" style="margin-left: 7px;">
 
-    <form method="post" class="w3-container w3-display-left w3-padding-60 w3-margin-top" style="margin-left: 7px;">
-        <h2 style="border: 1px solid black; width: 40%; padding-left: 1%;">Add Review</h2>
         <h3>{{landlord.last_name}} {{landlord.first_name}}</h3>
         <h3>{{landlord.address.raw}}</h3>
 
@@ -45,7 +45,7 @@
         {% endfor %}
 
              <input type="hidden" name="landlord" value="{{landlord}}">
-        <button type="submit" >Submit</button>
+        <button  type="submit" >Submit</button>
     </form>
 </body>
 {% endblock %}

@@ -44,6 +44,7 @@
     <div id="container"  class="center">
         <div id="land_title" >
             <h3>{{landlord.first_name}}, {{landlord.last_name}} <br> {{landlord.address.raw}}</h3>
+            <h2> {{avg.a}}/5 </h2>
             <form action="{% url 'addrating:review' landlord.id %}">
                 <input type="submit" value="Add Review"/>
             </form>

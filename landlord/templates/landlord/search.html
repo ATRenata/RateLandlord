@@ -5,17 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+
     {{form.media}}
+
 </head>
 
 <style>
-    body{
-        background-image:  url('{% static 'city2.jpg' %}');
-	background-color: grey;
-        min-height: 100%;
-        background-position: absolute center;
-        background-size: cover;
-    }
+
     button{
         background-color: black;
         position: relative;
@@ -26,6 +22,23 @@
   	    border-radius: 26px;
 	    border:5px solid black;
 	    margin-left: 5px;
+    }
+    table{
+        width: 100%;
+    }
+    th, td {
+      padding: 7px;
+      text-align: left;
+      border-style:solid;
+      border-width: 1px;
+      border-color:black;
+    }
+    .review{
+      background-color:white;
+
+    }
+    input{
+        w
     }
     input[type=text]{
         border: 1px solid black;
@@ -39,15 +52,39 @@
     input[type=text]:focus{
         border: 3px solid #2E0014;
     }
+
 </style>
 
 <body>
-    <div class="w3-display-middle" >
-        <form method="post">
-           {% csrf_token %}
-            {{form.address}}
-        <button type="submit">Search</button>
-     </form>
+
+    <div class="w3-display-topmiddle w3-padding-large">
+        <div style="width:72%; margin-left: 8%;">
+            <form method="post">
+               {% csrf_token %}
+               {{form.address}}
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+
+        <h2 style="margin-bottom: 15px">Latest Results</h2>
+        <div id="reviews" >
+            {% for landlord in landlords %}
+            <table class="review">
+                <tr>
+                    <td style="font-size: 19px;"> <strong> {{landlord.first_name}} {{landlord.last_name}}</strong> </td>
+                </tr>
+                <tr>
+                   {% for l in list %}
+                      {% if forloop.counter == forloop.parentloop.counter %}
+                         <td> <strong> Review:  </strong> {{l}}</td>
+                      {% endif %}
+                   {% endfor %}
+                </tr>
+            </table>
+            <br>
+            {% endfor %}
+        </div>
     </div>
 
 </body>

@@ -5,10 +5,11 @@ from addrating.models import *
 from django.http import HttpResponse
 from django.contrib import messages
 from landlord.models import LandlordForm
+from django.db.models import Avg
 
 def addreview(request, landlord_id):
     print("we're in addreview function")
-    landlord  = Landlord.objects.get(id=landlord_id)
+    landlord = Landlord.objects.get(id=landlord_id)
 
     if request.method == 'GET':
             form = ReviewForm()
@@ -22,10 +23,11 @@ def addreview(request, landlord_id):
         review.take_again = request.POST['take_again']
         review.save()
         messages.success(request, 'Thank you for your review')
-        return redirect('landlord:search') # will send get request
+        return show_reviews(request, landlord_id)
 
-def show_reviews(request, landlord_id):
+def show_reviews(request, landlord_id, ):
     print("we're in show reviews function")
     landlord = Landlord.objects.get(id=landlord_id)
     reviews = Review.objects.filter(landlord_id=landlord_id)
-    return render(request, 'reviews.html', {'reviews': reviews, 'landlord':landlord})
+    avg = Review.objects.filter(landlord_id=landlord_id).aggregate(a =( Avg('fixing_rate')+ Avg('liveable_cond'))/2)
+    return render(request, 'reviews.html', {'reviews': reviews, 'landlord':landlord, 'avg':avg})
