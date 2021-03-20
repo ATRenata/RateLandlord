@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'c0w*(4c!tdb27l!57r&3(o&qlql*!^
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ["ratelandlord.herokuapp.com"]
+ALLOWED_HOSTS = ['ratelandlord.herokuapp.com','127.0.0.1' ]
 
 from django.contrib.messages import constants as messages
 
