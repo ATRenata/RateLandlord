@@ -25,11 +25,11 @@ def search(request):
         l = len(landlords)
         landlords = landlords[(l-3):]
         list = []
-        # for x in range(len(landlords)):
-            # r = Review.objects.filter(landlord_id=landlords[x].id)[0].review
-            # list.append(r)
+        for x in range(len(landlords)):
+            r = Review.objects.filter(landlord_id=landlords[x].id)[0].review
+            list.append(r)
 
-        list = ["123", "123333", "oifjsoifj"]
+        # list = ["123", "123333", "oifjsoifj"]
         return render(request, 'landlord/search.html', {'form':form, 'landlords':landlords, 'list':list})
 
 def addlandlord(request):
