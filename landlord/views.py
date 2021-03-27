@@ -20,16 +20,17 @@ def search(request):
         else:
             messages.add_message(request, messages.WARNING, 'No landlord was added at this address. You can click on Add Landlord to add one.')
             return redirect('landlord:search')
-    # else:
-    #     landlords = Landlord.objects.all()
-    #     l = len(landlords)
-    #     landlords = landlords[(l-3):]
-    #     list = []
-    #     for x in range(len(landlords)):
-    #         r = Review.objects.filter(landlord_id=landlords[x].id)[0].review
-    #         list.append(r)
-    #
-    #     return render(request, 'landlord/search.html', {'form':form, 'landlords':landlords, 'list':list})
+    else:
+        landlords = Landlord.objects.all()
+        l = len(landlords)
+        landlords = landlords[(l-3):]
+        list = []
+        for x in range(len(landlords)):
+            r = Review.objects.filter(landlord_id=landlords[x].id)[0].review
+            list.append(r)
+
+        list = ["123", "123333", "oifjsoifj"]
+        return render(request, 'landlord/search.html', {'form':form, 'landlords':landlords, 'list':list})
 
 def addlandlord(request):
 
